@@ -1,0 +1,24 @@
+
+auth_key: 8d26a8f6751a3caf74bb0e52adfb8af8
+base_dir: package
+
+distributions:
+  - origin: Mu Dynamics, inc.
+    label: Mu Dynamics Studio
+    codename: natty
+    architectures: amd64
+    components: main
+    description:  Mu Dynamics Studio Apt Repository
+    signwith: false
+      
+  - origin: Mu Dynamics, inc.
+    label: Mu Dynamics Studio
+    codename: trunk
+    architectures: amd64
+    components: main
+    description:  Mu Dynamics Studio Apt Repository
+    signwith: false
+
+options:
+  - verbose
+  - --ask-passphrase
