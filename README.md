@@ -36,8 +36,13 @@ options:
 ```
 
 ## API
+```
+  - Push
   POST http://x.x.x.x/package/upload
+  
+  - List
   GET http://x.x.x.x/package/list
+```
 
 ## How to upload from remote
 
