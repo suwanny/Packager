@@ -45,7 +45,7 @@ class PackageController < ApplicationController
     if reprepro
       command = "#{reprepro} -b #{base_dir} includedeb #{code} #{path}"
       logger.info "Command: #{command}"
-      `#{reprepro} -b #{base_dir} includedeb #{code} #{path}`
+      logger.info `#{reprepro} -b #{base_dir} includedeb #{code} #{path}`
     end
     
     render :json => {:okay => true, :file => uploaded_file.original_filename }
