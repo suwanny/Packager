@@ -37,19 +37,19 @@ options:
 
 ## Installing Key
 
-* Create a key
+### Create a key
 ```
   gpg --gen-key
 
   And follow the instructions.
 ```
 
-* Find a key
+### Find a key
 ```
   gpg --list-key
 ```
 
-* Export a public key
+### Export a public key
 ```
   gpg -a --output project.gpg --export 6FFD7XXX
 
