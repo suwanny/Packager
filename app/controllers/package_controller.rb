@@ -41,6 +41,8 @@ class PackageController < ApplicationController
 
     reprepro = Packager::Application.config.reprepro
     if reprepro
+      command = "#{reprepro} -b #{base_dir} includedeb #{code} #{path}"
+      logger.info "Command: #{command}"
       base_dir = Packager::Application.config.base_dir
       `#{reprepro} -b #{base_dir} includedeb #{code} #{path}`
     end
