@@ -57,6 +57,14 @@ options:
   Then, configure the 'signwith'
 ```
 
+### Install the key from remote
+```
+  curl http://x.x.x.x/keys/pub.gpg | sudo apt-key add -
+  echo "deb http://x.x.x.x/apt natty main" > /etc/apt/sources.list.d/mu.list
+  sudo aptitude update
+  sudo aptitude install your-package
+```
+
 ## API
 ```
   - Push
