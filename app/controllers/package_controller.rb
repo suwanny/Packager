@@ -12,12 +12,17 @@ class PackageController < ApplicationController
   
   def list
     code = params["code"] || "trunk"
-    resp = ""
+    resp = {}
+    
+    code = params['code'] || "trunk"
+    base_dir = Packager::Application.config.base_dir
     reprepro = Packager::Application.config.reprepro
     if reprepro
-      # `#{reprepro} -b `
+      distributions = Packager::Application.config.distributions
+      distributions.each do |dist|
+        resp[code] = `#{reprepro} -b #{base_dir} list #{code} `
+      end
     end
-    
     render :json => {:okay => true, :resp => resp}
   end
   
