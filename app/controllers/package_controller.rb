@@ -1,3 +1,5 @@
+
+
 class PackageController < ApplicationController
   def index
     distributions = Packager::Application.config.distributions
@@ -23,6 +25,8 @@ class PackageController < ApplicationController
     end
     render :json => {:okay => true, :resp => resp}
   end
+  
+  require 'fileutils'
   
   def upload
     # Auth Here.
@@ -50,6 +54,9 @@ class PackageController < ApplicationController
       logger.info "Command: #{command}"
       logger.info `#{reprepro} -b #{base_dir} includedeb #{code} #{path}`
     end
+    
+    # Delete Uploaded package.
+    FileUtils.rm_f path
     
     render :json => {:okay => true, :file => uploaded_file.original_filename }
   rescue => e
