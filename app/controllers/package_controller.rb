@@ -40,10 +40,11 @@ class PackageController < ApplicationController
     raise "Not Debian Package" unless file_info =~ /Debian\sbinary\spackage/
 
     reprepro = Packager::Application.config.reprepro
+    base_dir = Packager::Application.config.base_dir
+    
     if reprepro
       command = "#{reprepro} -b #{base_dir} includedeb #{code} #{path}"
       logger.info "Command: #{command}"
-      base_dir = Packager::Application.config.base_dir
       `#{reprepro} -b #{base_dir} includedeb #{code} #{path}`
     end
     
