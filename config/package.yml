@@ -22,3 +22,5 @@ distributions:
 options:
   - verbose
   - ask-passphrase
+
+pubkey_pth: /home/me/key.gpg
