@@ -1,6 +1,6 @@
 
 auth_key: 8d26a8f6751a3caf74bb0e52adfb8af8
-base_dir: package
+base_dir: apt
 
 distributions:
   - origin: Mu Dynamics, inc.

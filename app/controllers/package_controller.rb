@@ -1,23 +1,46 @@
 class PackageController < ApplicationController
   def index
+    @url = "http://x.x.x.x/package/"
   end
   
   def list
-    render :json => {:okay => true}
+    code = params["code"] || "trunk"
+    resp = ""
+    reprepro = Packager::Application.config.reprepro
+    if reprepro
+      # `#{reprepro} -b `
+    end
+    
+    render :json => {:okay => true, :resp => resp}
   end
   
   def upload
-    logger.debug params
-    logger.debug "Code: #{params['code']}"
-    logger.debug "Key : #{params['key']} and AuthKey: #{Packager::Application.config.auth_key}"
+    # Auth Here.
+    unless params['key'] == Packager::Application.config.auth_key
+      raise "Auth Key is not matched"
+    end
     
-    # ActionDispatch::Http::UploadedFile
+    code = params['code'] || "trunk"
+    logger.debug "Code: #{code}"
+    
     uploaded_file = params['package']
-    logger.debug "File: #{uploaded_file.original_filename}"
-    logger.debug "Size: #{uploaded_file.size}"
-    # path = File.join("/tmp", uploaded_file.original_filename)
-    # File.open(path, "wb") { |f| f.write(uploaded_file.read) }
-    render :json => {:okay => true}
+    path = File.join("/tmp", uploaded_file.original_filename)
+    File.open(path, "wb") { |f| f.write(uploaded_file.read) }
+    
+    # Register 
+    logger.debug "Path: #{path}"
+    file_info = `file #{path}`
+    raise "Not Debian Package" unless file_info =~ /Debian\sbinary\spackage/
+
+    reprepro = Packager::Application.config.reprepro
+    if reprepro
+      base_dir = Packager::Application.config.base_dir
+      `#{reprepro} -b #{base_dir} includedeb #{code} #{path}`
+    end
+    
+    render :json => {:okay => true, :file => uploaded_file.original_filename }
+  rescue => e
+    render :json => {:okay => false, :msg => e.message }, :status => 401
   end
 
 end

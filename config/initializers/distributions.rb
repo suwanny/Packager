@@ -38,4 +38,8 @@ end
 content_options += "basedir #{base_dir}\n"
 
 puts "Distributions==>\n#{content_dist}"
+File.open(path_distributions, "wb") { |f| f.write(content_dist) }
+
 puts "Options==>\n#{content_options}"
+File.open(path_options, "wb") { |f| f.write(content_options) }
+
