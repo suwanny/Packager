@@ -38,18 +38,24 @@ options:
 ## Installing Key
 
 * Create a key
+```
   gpg --gen-key
-  
+
   And follow the instructions.
-  
+```
+
 * Find a key
+```
   gpg --list-key
+```
 
 * Export a public key
+```
   gpg -a --output project.gpg --export 6FFD7XXX
 
   Configure the path or put it one some public place.
   Then, configure the 'signwith'
+```
 
 ## API
 ```
