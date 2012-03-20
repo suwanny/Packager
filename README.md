@@ -3,8 +3,10 @@
 An easy rails APT package repository.
 
 ## Requirement
+```
   ubuntu and ruby on rails
   sudo aptitude install reprepro
+```
   
 ## Configuration
 ```yaml
