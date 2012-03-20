@@ -1,6 +1,13 @@
 class PackageController < ApplicationController
   def index
-    @url = "http://x.x.x.x/package/"
+    distributions = Packager::Application.config.distributions
+    base = Packager::Application.config.base_name
+    port = request.port == 80 ? "" : ":#{request.port}"
+    url = "http://#{request.host}#{port}/#{base}"
+    @urls = []
+    distributions.each do |dist|
+      @urls << "deb #{url} #{dist['codename']} #{dist['components']}"
+    end
   end
   
   def list

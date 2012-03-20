@@ -1,2 +1,12 @@
 <h1>Packager</h1>
 
+<p>Add one of them in your /etc/apt/sources.list.d</p>
+<% @urls.each do |url| %>
+  <h3><%= url %></h3>
+<% end %>
+
+<pre>
+  For example,
+  $ echo "deb http://x.x.x.x/apt natty main" > /etc/apt/sources.list.d/mu.list
+  $ aptitude update
+<pre>
