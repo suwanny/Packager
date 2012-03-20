@@ -8,8 +8,6 @@ FileUtils.mkdir_p base_dir + "/conf"
 path_distributions = base_dir + "/conf/distributions"
 path_options = base_dir + "/conf/options"
 
-puts "Distributions: #{distributions}"
-puts "Options: #{options}"
 puts "Base Dir: #{base_dir}"
 
 # Create Distribution files

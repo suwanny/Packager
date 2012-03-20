@@ -21,4 +21,4 @@ distributions:
 
 options:
   - verbose
-  - --ask-passphrase
+  - ask-passphrase
