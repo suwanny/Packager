@@ -12,6 +12,8 @@ Packager::Application.configure do
   
   cmd_reprepro = `which reprepro`
   config.reprepro = cmd_reprepro.size > 0 ? cmd_reprepro : nil
+  
+  puts "REPREPRO: #{config.reprepro}"
 end
 
 # Initialize the rails application
