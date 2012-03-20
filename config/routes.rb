@@ -1,6 +1,6 @@
 Packager::Application.routes.draw do
   get "package/index"
-  get "package/list_stable" => "package#list"
+  get "package/list" => "package#list"
   post "package/upload" => "package#upload"
   root :to => "package#index"
 
