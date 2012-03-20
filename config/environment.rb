@@ -10,7 +10,7 @@ Packager::Application.configure do
   config.base_dir = File.expand_path('../../', __FILE__) + "/public/" + package["base_dir"]
   config.base_name = package["base_dir"]
   
-  cmd_reprepro = `which reprepro`
+  cmd_reprepro = `which reprepro`.chomp
   config.reprepro = cmd_reprepro.size > 0 ? cmd_reprepro : nil
   
   puts "REPREPRO: #{config.reprepro}"
